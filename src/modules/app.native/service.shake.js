@@ -3,7 +3,7 @@
   function ShakeService($q, $window, cordovaUtils) {
     var service = this;
 
-    service.listen = cordova.Utils.whenReady(function (callback) {
+    service.listen = cordovaUtils.whenReady(function (callback) {
       var deferred = $q.defer();
       $window.shake.startWatch(callback, null, deferred.reject);
       return deferred.promise;
