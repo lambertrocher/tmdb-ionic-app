@@ -1,5 +1,5 @@
-ion-view.view-home(view-title="Accueil")
-  ion-header-bar.bar-subheader.item-input-inset
+ion-view(view-title="Accueil")
+  ion-header-bar.bar-subheader.item-imput-inset
     label.item-input-wrapper
       i.icon.ion-ios-search.placeholder-icon
       input(
@@ -8,18 +8,16 @@ ion-view.view-home(view-title="Accueil")
         type="search")
     button.button.button-clear.button-royal(
       ng-disabled="search.query.length < 3",
-      on-tap="homeController.search()",
-      type="button")
-      | OK
+      on-tap="homeController.search()")
+      |  OK
   ion-content
     ion-list
       ion-item.item-divider Résultats
+      //- item affiché uniquement s'il n'y a pas de résultats
       ion-item(ng-if="search.results.length < 1") Aucun résultat
-      ion-item.item-text-wrap.item-thumbnail-left.item-icon-right(
+      ion-item.item-icon-right(
         ng-repeat="result in search.results",
-        ui-state-params="{ id: result.id }",
-        ui-state="STATE_DETAILS")
-        img(ng-src="{{ result.poster }}", ng-if="result.poster", alt="Poster")
-        h2 {{ result.title }}
-        p {{ result.overview }}
+        ui-state= "STATE_DETAILS")
+        |  {{ result.title }}
         i.icon.ion-ios-arrow-forward
+
